@@ -10,7 +10,8 @@ module.exports = {
         filename: "[name].[hash].js"
     },
     devServer: {
-        port:3000
+        port:3000,
+        historyApiFallback:true
     },
     plugins: [
         new HTMLWebPackPlugin({template: './src/index.html'}),
@@ -45,7 +46,12 @@ module.exports = {
                         presets: ["@babel/preset-react","@babel/preset-env"]
                     }
                 }
-            }
+            },
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
+            },
         ]
     }
 

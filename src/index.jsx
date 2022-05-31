@@ -1,8 +1,20 @@
 // import './index.less'
-import React from 'react'
-import {render} from 'react-dom';
+import React, {StrictMode} from 'react'
 import App from './components/App.jsx';
+import {BrowserRouter} from 'react-router-dom';
+import {createRoot} from 'react-dom/client';
+import {Provider} from 'react-redux';
+import {state} from './store/state.js';
 
-render(
-    <App/>,document.getElementById("root")
-)
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
+root.render(
+    <StrictMode>
+        <Provider store={state}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+        </Provider>
+    </StrictMode>
+);
